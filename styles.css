@@ -1,0 +1,137 @@
+body{
+  background-color:#111111;
+  font-family: Iceland;
+  color:white;
+  margin:0;
+}
+
+#App{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:auto;
+  height:100vh;
+  max-width:70%;
+  min-width:350px;
+  background-color:#14250D;
+  border-left:10px solid #588157;
+  border-right:10px solid #588157;
+  //border-bottom: 10px solid #588157;
+  button{
+    background-color:#588157;
+    border:none;
+    box-shadow: (0px, 0px, 1px, 0px, white);
+    border-radius:2px;
+    i{
+      color:#111110;
+    }
+  }
+  button:hover{
+    cursor:pointer;
+    box-shadow: (0px, 0px, 1px, 0px, white, inset);
+    i{
+      color:#2DC42A;
+    }
+  }
+  span{
+    font-family:"Iceland";
+    font-size:2em;
+    margin:0.5em;
+    text-align:center;
+  }
+}
+
+
+#clock-container{
+  display:grid;
+  grid-template-areas: "timer timer"
+                        "session-counter session-counter"
+                        "break-counter break-counter";
+  grid-column-gap:1em;
+  width:70%;
+}
+
+$grid-elements : ("timer" "break-counter" "session-counter");
+
+@each $elem in $grid-elements{
+  ##{$elem}{
+    grid-area:#{$elem};
+  }
+}
+
+$grid-elementos : ("canvas" "timer-label" "time-left" "start_stop" "reset");
+
+@each $elem in $grid-elementos{
+  ##{$elem}{
+    grid-area:#{$elem};
+  }
+}
+
+#time-left, #timer-label{
+  border-radius:10px;
+  text-align:center;
+  background-color: white;
+  color: black;
+  padding:0.2em;
+  box-shadow: (0px, 0px, 1px, 0px, white, inset);
+}
+
+
+#timer{
+  padding:1em;
+  margin-bottom:1em;
+  
+  canvas{
+    margin:auto;
+  }
+  
+  >div{
+    display:grid;
+    grid-template-areas: "canvas canvas"
+      "timer-label time-left"
+      "start_stop reset";
+    background-color:#588157;
+    border-radius:5px;
+    border:2px solid #DAD7CD;
+    padding:1em;
+    box-shadow: 0px, 0px, 3px, 3px, white, inset;
+    
+    >button{
+      margin:0.5em;
+    }
+    
+  }
+}
+
+#break-counter, #session-counter{
+  display:grid;
+  grid-template-columns:3fr 1fr 1fr;
+  flex-direction:column;
+  background-color:#14250D;
+  border-radius:5px;
+  padding:0.3em;
+  box-shadow: 0px, 0px, 2px, 1px, white, inset;
+  margin:0.5em;
+  
+  >div{
+    border-radius:2px;
+    box-shadow: 0px, 0px, 1px, 0px, white;
+    background-color:white;
+    color: black;
+    padding:0.1em;
+    div{
+      display:inline-block;
+      text-align:center;
+    }
+  }
+  
+  >button{
+    margin-left:0.5em;
+  }
+}
+
+@media (max-width:700px){
+  #clock-container{
+    width:100%;  
+  }
+}
